@@ -57,30 +57,26 @@ const generateCompletionAction = async (info) => {
       sendMessage('generating...');
   
       const { selectionText } = info;
-      const basePromptPrefix = `
-        Write me a detailed table of contents for a blog post with the title below.
-        
-        Title:
-        `;
+      const basePromptPrefix = `Is it true that `;
   
         const baseCompletion = await generate(
           `${basePromptPrefix}${selectionText}`
         );
         
-        const secondPrompt = `
-          Take the table of contents and title of the blog post below and generate a blog post written in thwe style of Paul Graham. Make it feel like a story. Don't just list the points. Go deep into each one. Explain why.
+        // const secondPrompt = `
+        //   Take the table of contents and title of the blog post below and generate a blog post written in thwe style of Paul Graham. Make it feel like a story. Don't just list the points. Go deep into each one. Explain why.
           
-          Title: ${selectionText}
+        //   Title: ${selectionText}
           
-          Table of Contents: ${baseCompletion.text}
+        //   Table of Contents: ${baseCompletion.text}
           
-          Blog Post:
-            `;
+        //   Blog Post:
+        //     `;
         
-        const secondPromptCompletion = await generate(secondPrompt);
+        // const secondPromptCompletion = await generate(secondPrompt);
         
         // Send the output when we're all done
-        sendMessage(secondPromptCompletion.text);
+        sendMessage(`${basePromptPrefix}${selectionText}? ` + baseCompletion.text);
     } catch (error) {
       console.log(error);
   

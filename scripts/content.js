@@ -1,36 +1,41 @@
 const insert = (content) => {
-// Find Calmly editor input section
-const elements = document.getElementsByClassName('droid');
+const body = document.body;
+const p = document.createElement('p');
+p.textContent = content;
+p.setAttribute("style", "background-color:red; font-size:2em;");
+body.prepend(p);
 
-if (elements.length === 0) {
-  return;
-}
+// const elements = document.getElementsByClassName('droid');
 
-const element = elements[0];
+// if (elements.length === 0) {
+//   return;
+// }
 
-// Grab the first p tag so we can replace it with our injection
-const pToRemove = element.childNodes[0];
-pToRemove.remove();
+// const element = elements[0];
 
-// Split content by \n
-const splitContent = content.split('\n');
+// // Grab the first p tag so we can replace it with our injection
+// const pToRemove = element.childNodes[0];
+// pToRemove.remove();
 
-// Wrap in p tags
-splitContent.forEach((content) => {
-    const p = document.createElement('p');
+// // Split content by \n
+// const splitContent = content.split('\n');
+
+// // Wrap in p tags
+// splitContent.forEach((content) => {
+//     const p = document.createElement('p');
   
-    if (content === '') {
-      const br = document.createElement('br');
-      p.appendChild(br);
-    } else {
-      p.textContent = content;
-    }
+//     if (content === '') {
+//       const br = document.createElement('br');
+//       p.appendChild(br);
+//     } else {
+//       p.textContent = content;
+//     }
   
-    // Insert into HTML one at a time
-    element.appendChild(p);
-  });
+//     // Insert into HTML one at a time
+//     element.appendChild(p);
+//   });
 
-  
+
     return true;
   };
 

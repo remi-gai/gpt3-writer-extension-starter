@@ -11,7 +11,7 @@
   },
   "action": {
     "default_popup": "index.html",
-    "default_title": "Generate blog post"
+    "default_title": "Is this true?"
   },
   "background": {
     "service_worker": "scripts/contextMenuServiceWorker.js"
